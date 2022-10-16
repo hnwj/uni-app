@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<view class="search-box">
+			<mySearch @click="gotoSearch"></mySearch>
+		</view>
 		<!-- 轮播图区域 -->
 		<swiper :indicator-dots="true" circular :autoplay="true" :interval="3000" :duration="1000">
 			<swiper-item v-for="(item,index) in swiperList" :key="item.goods_id">
@@ -39,7 +42,11 @@
 </template>
 
 <script>
+	import mySearch from '@/components/my-search/my-search.vue'
 	export default {
+		components: {
+			mySearch
+		},
 		data() {
 			return {
 				// 轮播图数据
@@ -98,6 +105,12 @@
 				this.floorList = res.message
 				console.log('this.floorList', this.floorList);
 			},
+			// 搜索跳转
+			gotoSearch() {
+				uni.navigateTo({
+					url: '/subpkg/search/search'
+				})
+			}
 		}
 	}
 </script>
@@ -139,5 +152,12 @@
 			flex-wrap: wrap;
 			justify-content: space-around;
 		}
+	}
+
+	// 实现上滑，搜索框置顶
+	.search-box {
+		position: sticky;
+		top: 0;
+		z-index: 999;
 	}
 </style>
