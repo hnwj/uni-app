@@ -29,7 +29,9 @@
 
 <script>
 	import mySearch from '@/components/my-search/my-search.vue'
+	import badgeMix from '@/mixins/tabbar-badge.js'
 	export default {
+		mixins: [badgeMix],
 		components: {
 			mySearch
 		},
@@ -76,7 +78,7 @@
 			// 路由跳转到详情页
 			gotoGoodsList(item3) {
 				uni.navigateTo({
-					url: '/subpkg/goods_detail/goods_detail?cid=' + item3.cat_id
+					url: '/subpkg/goods_list/goods_list?cid=' + item3.cat_id
 				})
 			},
 			// 搜索跳转

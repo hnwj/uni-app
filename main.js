@@ -12,6 +12,8 @@ uni.$http = $http
 
 // 配置请求根路径
 $http.baseUrl = 'https://api-ugo-web.itheima.net'
+// 导入vuex
+import store from '@/store/store.js'
 
 // 请求开始之前做一些事情
 $http.beforeRequest = function(options) {
@@ -37,6 +39,7 @@ uni.$showMsg = function(title = '数据加载失败！', duration = 1500) {
 Vue.config.productionTip = false
 App.mpType = 'app'
 const app = new Vue({
+	store,
 	...App
 })
 app.$mount()
